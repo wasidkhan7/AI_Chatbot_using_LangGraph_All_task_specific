@@ -64,6 +64,13 @@ SQLite Database (Persistent Memory + Topics)
 ├── README.md
 └── .env # Contains OPENAI_API_KEY which is seccret key
 
+
+Chatbot UI:
+
+<img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/389bae0d-31bf-42e5-88f8-f10e9b02ca66" />
+
+
+
 ## ⚙️ Installation and Setup
 
 1. **Clone this repository**
