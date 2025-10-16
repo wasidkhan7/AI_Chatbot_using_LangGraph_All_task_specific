@@ -1,73 +1,88 @@
 # 💬 LangGraph Chatbot — AI Assistant with Memory and Streamlit UI  
-# AI_Chatbot_using_LangGraph_All_task_specific
+# 💬 AI Chatbot using LangGraph + Streamlit + OpenAI + SQLite
 
-AI Chatbot using langGraph which can give you any answer concisely with precision
-
-
-
-A fully functional **AI Chatbot** built using **LangGraph**, **LangChain**, and **Streamlit**, integrated with **OpenAI’s GPT-4o-mini** model.  
-It’s designed for real-world use — remembers past conversations, handles context dynamically, and provides precise answers to any user query.
+### 🧠 A full-stack conversational chatbot project built 
 
 ---
 
-## 🚀 Features  
-
-### 🧠 Core AI Logic
-- **LLM Integration:** Uses `ChatOpenAI` from `langchain_openai` with the model `gpt-4o-mini` for intelligent responses.  
-- **Graph-based Flow:** Built using LangGraph’s `StateGraph`, providing modular, node-based conversational control.  
-- **State Management:** Each node maintains its own state via `TypedDict` and `add_messages` reducer.  
-- **Dynamic Conversation Handling:** Chat flow moves automatically between defined nodes (`START` → `chat_node` → `END`).
-
-### 💾 Memory System
-- **Checkpointer Enabled:** Uses `InMemorySaver` from `langgraph.checkpoint.memory` for storing conversation states.  
-- **Thread-specific Persistence:** Every session uses a unique `thread_id`, allowing separate conversation threads.  
-- **Expandable Design:** Checkpointer can easily be upgraded to a persistent memory backend (e.g., Redis, SQLite).
-
-### 🧩 Backend (LangGraph + OpenAI)
-- `langgraph_backend.py` handles:
-  - Node definition (`chat_node`)
-  - State management  
-  - Graph compilation  
-  - LLM interaction logic  
-- Automatically updates conversation memory using LangGraph’s reducer mechanism (`add_messages`).
-
-### 🖥️ Frontend (Streamlit UI)
-- `streamlit_frontend.py` provides:
-  - **Interactive Chat Interface** using Streamlit components (`st.chat_message`, `st.chat_input`).
-  - **Session-based Memory** using `st.session_state` for conversation continuity.
-  - **Clean UI Layout:** Displays both user and assistant messages distinctly.
-  - **Loading Spinners:** Provides visual feedback during API responses.
-  - **Thread Initialization:** Automatically creates and manages `thread_id` for each chat.
-
-### 🔁 Conversation Flow
-1. User enters a message in Streamlit UI.  
-2. Message is stored and passed to LangGraph backend.  
-3. Backend LLM node (`chat_node`) processes the query using GPT-4o-mini.  
-4. Response is appended to the state and displayed in the chat window.  
-5. Memory is updated for future turns within the same thread.  
+## 📑 Project Overview
+This project is an intelligent chatbot built using **LangGraph**, **LangChain**, **OpenAI API**, and **Streamlit** as frontend.  
+The chatbot can:
+- Remember previous conversations using **SQLite memory (checkpoints)**
+- Allow users to **start, resume, or delete** conversation threads
+- Auto-generate **titles for each chat**
+- Handle **streaming chat responses**
+- Store all messages persistently in the **database**
+- Support **document upload and voice transcription (optional features)**
 
 ---
-<img width="1788" height="847" alt="image" src="https://github.com/user-attachments/assets/bbc0c11c-0c0f-4a61-ae40-c6562c66786a" />
 
-<img width="1775" height="839" alt="image" src="https://github.com/user-attachments/assets/3d7fe078-f328-43c3-a7d8-44dd74a657d7" />
+## 🧩 Tech Stack
 
-
-
-
-
-
-## ⚙️ Technical Stack
-
-| Component | Technology |
-|------------|-------------|
-| Language | Python 3.10+ |
-| Framework | LangGraph + Streamlit |
-| LLM | OpenAI GPT-4o-mini |
-| Memory | LangGraph Checkpointer (`InMemorySaver`) |
-| UI | Streamlit Components (`st.chat_message`, `st.chat_input`) |
-| Environment | .env file for API key management but i hanvt pushed it here because it is secret key |
+| Component | Technology Used |
+|------------|----------------|
+| **Frontend** | Streamlit |
+| **Backend** | LangGraph + LangChain + OpenAI |
+| **Database** | SQLite |
+| **LLM Model** | GPT-4o-mini (via OpenAI API) |
+| **Memory** | SqliteSaver (persistent checkpointing) |
 
 ---
+
+## 🚀 Features
+
+✅ **Persistent Conversations:**  
+All chat sessions are automatically saved in SQLite database.
+
+✅ **Sidebar with Threads:**  
+View all previous chats, resume them, or delete specific ones.
+
+✅ **Auto Chat Titles:**  
+Each conversation is automatically named based on your first message.
+
+✅ **Streaming Responses:**  
+LLM responses appear in real-time, providing a smooth user experience.
+
+---
+## 🧱 System Architecture
+
+Frontend (Streamlit)
+↓
+Backend (LangGraph + LangChain)
+↓
+OpenAI GPT-4o-mini API
+↓
+SQLite Database (Persistent Memory + Topics)
+
+
+## 📂 Project Structure
+📦 Chatbot_FYP
+├── langgraph_backend.py # Backend logic (LangGraph, SQLite, Checkpointing)
+├── Front_app.py # Streamlit Frontend
+├── chatbot_Database.db # SQLite Database
+├── requirements.txt
+├── README.md
+└── .env # Contains OPENAI_API_KEY which is seccret key
+
+## ⚙️ Installation and Setup
+
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/<your-username>/LangGraph-Chatbot-FYP.git
+   cd LangGraph-Chatbot-FYP
+
+   pip install -r requirements.txt
+
+🧠 Use Cases
+
+Interactive AI-based personal assistant
+
+Educational chatbot for Q&A
+
+Internal team assistant for documents
+
+Customer support prototype
+
 
 #### Run backend
 python langgraph_backend.py
@@ -77,6 +92,11 @@ streamlit run streamlit_frontend.py
 
 MIT License © 2025 — Open for educational and non-commercial use.
 
-🤖 Author
+
+🧑‍💻 Author
 Wasid Khan
+📍 BS Computer Science | University of Peshawar
+🔗 LinkedIn Profile
+
+🌐 GitHub: github.com/wasidkhan7
 💼 AI | LangGraph | Streamlit | Python Developer
